@@ -1,0 +1,29 @@
+{
+	"name": "kikai",
+	"version": "1.0.0",
+	"description": "A personal Discord.JS v14 bot template",
+	"main": "kikai.js",
+	"scripts": {
+		"start": "node kikai.js",
+		"dev": "nodemon kikai.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/roeegh/kikai.git"
+	},
+	"author": {
+		"name": "Roeegh",
+		"url": "https://github.com/roeegh",
+		"email": "admin@roeegh.dev"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"@discordjs/rest": "^1.0.0",
+		"discord-api-types": "^0.36.2",
+		"discord.js": "^14.0.2",
+		"dotenv": "^16.0.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.19"
+	}
+}
