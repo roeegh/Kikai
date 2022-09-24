@@ -1,7 +1,7 @@
-const { InteractionType } = require("discord-api-types/v9");
+const { InteractionType } = require('discord-api-types/v9');
 
 module.exports = {
-	name: "interactionCreate",
+	name: 'interactionCreate',
 	async execute(interaction) {
 		if (interaction.type === InteractionType.ApplicationCommandAutocomplete) return;
 		const request = interaction.client.autocompleteInteractions.get(interaction.commandName);
