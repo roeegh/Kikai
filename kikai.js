@@ -9,8 +9,6 @@ const client = new Client({
 		GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMembers,
 		GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.GuildMessageReactions,
-		GatewayIntentBits.GuildPresences,
         GatewayIntentBits.MessageContent,
 	]
 });
@@ -64,16 +62,19 @@ try {
     console.log('[CLIENT] All Autocomplete Interactions Loaded.');
 } catch (error) { console.error(`[ERROR] ${error}`) }
 
-const buttonCommands = fs.readdirSync('./interactions/buttons');
+try {
+    const buttonCommands = fs.readdirSync('./interactions/buttons');
 
-for (const module of buttonCommands) {
-	const commandFiles = fs.readdirSync(`./interactions/buttons/${module}`).filter((file) => file.endsWith('.js'));
+    for (const module of buttonCommands) {
+        const commandFiles = fs.readdirSync(`./interactions/buttons/${module}`).filter((file) => file.endsWith('.js'));
 
-	for (const commandFile of commandFiles) {
-		const command = require(`./interactions/buttons/${module}/${commandFile}`);
-		client.buttonCommands.set(command.id, command);
-	}
-}
+        for (const commandFile of commandFiles) {
+            const command = require(`./interactions/buttons/${module}/${commandFile}`);
+            client.buttonCommands.set(command.id, command);
+        }
+    }
+    console.log('[CLIENT] All Button Interactions Loaded.');
+} catch (error) { console.error(`[ERROR] ${error}`) }
 
 try {
     const modalCommands = fs.readdirSync('./interactions/modals');
